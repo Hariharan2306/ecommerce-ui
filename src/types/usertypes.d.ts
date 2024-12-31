@@ -12,3 +12,5 @@ export type UserTypesReducer = {
   error: string;
   userData: CreateUserData;
 };
+
+export type UpdatePasswordProps = { userMail: string; password: string };

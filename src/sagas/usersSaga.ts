@@ -21,7 +21,7 @@ import {
 } from "../service/userService";
 import { UserTypes } from "../actions/actionTypes";
 import { SagaIterator } from "redux-saga";
-import { CreateUserData } from "../types/usertypes";
+import { CreateUserData, UpdatePasswordProps } from "../types/usertypes";
 
 function* fetchUserDetails(userName?: string): any {
   try {
@@ -33,10 +33,10 @@ function* fetchUserDetails(userName?: string): any {
   }
 }
 
-function* updateUserPassword(userMail?: string): any {
+function* updateUserPassword(props?: UpdatePasswordProps): any {
   try {
     yield put(requestUserPassword());
-    yield call(() => updateUserPasswordService(userMail));
+    yield call(() => updateUserPasswordService(props as UpdatePasswordProps));
     yield put(successUserPassword());
   } catch (error) {
     yield put(failureUserPassword(error as Error));

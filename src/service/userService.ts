@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CreateUserData } from "../types/usertypes";
+import { CreateUserData, UpdatePasswordProps } from "../types/usertypes";
 
 const api = axios.create({ baseURL: "http://localhost:4000" });
 
@@ -11,9 +11,12 @@ export const fetchUserDataService = async (
   return response;
 };
 
-export const updateUserPasswordService = async (userMail?: string) => {
+export const updateUserPasswordService = async ({
+  userMail,
+  password,
+}: UpdatePasswordProps) => {
   const url = "/users/update-password";
-  const response = await api.put(url, { userMail });
+  const response = await api.put(url, { userMail, password });
   return response;
 };
 

@@ -1,4 +1,4 @@
-import { CreateUserData } from "../types/usertypes";
+import { CreateUserData, UpdatePasswordProps } from "../types/usertypes";
 import { UserTypes } from "./actionTypes";
 
 export const fetchUserDetails = (userName: String) => ({
@@ -17,9 +17,9 @@ export const failureFetchUserDetails = (error: Error) => ({
   error: error.message,
 });
 
-export const updateUserPassword = (userMail: String) => ({
+export const updateUserPassword = (props: UpdatePasswordProps) => ({
   type: UserTypes.UPDATE_USER_DATA,
-  userMail,
+  props,
 });
 export const requestUserPassword = () => ({
   type: UserTypes.REQUEST_UPDATE_USER_DATA,
